@@ -3,6 +3,7 @@
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,7 +40,7 @@ Route::middleware(['isLoggedIn'])->group(function () {
         Route::get('/users/edit', 'edit');
         Route::post('/users/update', 'update');
     });
-    
+
     Route::controller(CustomerController::class)->group(function () {
         Route::get('/customers', 'AllCustomers')->name('all_customers');
         Route::get('/customers/all', 'LoadAllCustomers');
@@ -49,11 +50,15 @@ Route::middleware(['isLoggedIn'])->group(function () {
         Route::post('/customer/delete/{id}', 'delete')->name('delete_customer');
         Route::get('/customers-deactive', 'DeactiveCustomers')->name('deactive_customer');
         Route::post('/customers/load/deactive', 'showdeactive');
-        Route::post('/customer/mothercompany/add', 'AddMotherCompany');
-        Route::get('/mother_company/all', 'AllMotherCompanies');
-        Route::post('/mother_company/edit', 'MotherCompanyEdit');
-        Route::post('/mother_company/delete/{id}', 'delete_mother_company')->name('delete_mother_company');
-        Route::get('/load-mother-companies', 'LoadMotherCompanies');
+    });
+
+    Route::controller(SupplierController::class)->group(function () {
+        Route::get('/suppliers', 'AllSuppliers')->name('all_suppliers');
+        Route::get('/suppliers/all', 'LoadAllSuppliers');
+        Route::post('/supplier/store', 'SupplierStore');
+        Route::get('/supplier/edit', 'edit');
+        Route::post('/supplier/update', 'update');
+        Route::post('/supplier/delete/{id}', 'delete')->name('delete_supplier');
     });
 
     Route::controller(ItemsController::class)->group(function () {

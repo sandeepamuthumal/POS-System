@@ -43,6 +43,15 @@
                         <li><a href="{{ route('deactive_customer') }}">Inactive Customers</a></li>
                     </ul>
                 </li>
+
+                 {{-- Suppliers --}}
+                <li>
+                    <a class="ai-icon" href="{{ route('all_suppliers') }}" aria-expanded="false">
+                        <i class="flaticon-381-user-8"></i>
+                        <span class="nav-text">Suppliers</span>
+                    </a>
+                </li>
+
             @else
                 {{-- Dashboard --}}
                 <li><a class="ai-icon" href="{{ route('user_dashboard') }}" aria-expanded="false">
@@ -55,7 +64,7 @@
         </ul>
 
         <div class="copyright">
-            <p><strong>EasyWash Admin Dashboard</strong> © 2023 All Rights Reserved</p>
+            <p><strong>POS Admin Dashboard</strong> © 2023 All Rights Reserved</p>
         </div>
 
         {{-- <div class="copyright">

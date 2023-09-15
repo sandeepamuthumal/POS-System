@@ -137,44 +137,6 @@
             });
         }
 
-        // function deleteData(data) {
-        //     Swal.fire({
-        //         title: 'Are you sure to deactivate user?',
-        //         icon: 'warning',
-        //         showCancelButton: true,
-        //         confirmButtonColor: '#3085d6',
-        //         cancelButtonColor: '#d33',
-        //         confirmButtonText: 'Yes, Deactivate It!'
-        //     }).then((result) => {
-        //         if (result.isConfirmed) {
-
-        //             let url = '{{ route('delete_users', ':id') }}'
-        //             url = url.replace(':id', data)
-
-        //             $.ajaxSetup({
-        //                 headers: {
-        //                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        //                 }
-        //             });
-
-        //             $.ajax({
-        //                 type: 'POST',
-        //                 url: url,
-        //                 success: function() {
-        //                     load_deactive_users();
-        //                     Swal.fire(
-        //                         'Deactivated!',
-        //                         'This user has been deactivated.',
-        //                         'success'
-        //                     );
-
-        //                 }
-        //             })
-
-        //         }
-        //     })
-        // }
-
         function activateData(data) {
             Swal.fire({
                 title: 'Are you sure to activate Customer?',
