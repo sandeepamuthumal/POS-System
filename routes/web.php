@@ -3,6 +3,7 @@
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/', [LoginController::class, 'index']);
 
 
+
 Route::middleware(['isLoggedIn'])->group(function () {
 
     Route::get('/user/dashboard', [LoginController::class, 'UserDashboard'])->name('user_dashboard');
@@ -40,6 +42,7 @@ Route::middleware(['isLoggedIn'])->group(function () {
         Route::get('/users/edit', 'edit');
         Route::post('/users/update', 'update');
     });
+
 
     Route::controller(CustomerController::class)->group(function () {
         Route::get('/customers', 'AllCustomers')->name('all_customers');
@@ -61,15 +64,15 @@ Route::middleware(['isLoggedIn'])->group(function () {
         Route::post('/supplier/delete/{id}', 'delete')->name('delete_supplier');
     });
 
-    Route::controller(ItemsController::class)->group(function () {
-        Route::post('/items/load/active', 'showactiveitem');
-        Route::get('/items', 'viewItem')->name('items');
-        Route::post('/branch/store', 'storebranch');
-        Route::post('/categorie/store', 'storecategorie');
-        Route::post('/item/store', 'storeitem');
-        Route::post('/items/delete/{id}', 'delete')->name('delete_item');
-        Route::get('/item/edit', 'edit');
-        Route::post('/item/update', 'update');
+    Route::controller(ProductController::class)->group(function () {
+        Route::get('/products', 'products')->name('products');
+        Route::get('/create/product', 'createProduct')->name('create_product');
+        Route::post('/category/store', 'storeCategory');
+        Route::get('/category/load', 'loadCategory');
+        Route::post('/product/store', 'storeProduct')->name('store_product');
+        Route::post('/product/delete/{id}', 'deleteProduct')->name('delete_product');
+        Route::get('/product/edit', 'editProduct');
+        Route::post('/product/update', 'updateProduct');
     });
 });
 

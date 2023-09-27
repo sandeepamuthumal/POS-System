@@ -52,6 +52,17 @@
                     </a>
                 </li>
 
+                {{-- products --}}
+                <li>
+                    <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                        <i class="flaticon-381-list"></i>
+                        <span class="nav-text">Products</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li><a href="{{ route('create_product') }}">Create Products</a></li>
+                        <li><a href="{{ route('products') }}">Products</a></li>
+                    </ul>
+                </li>
             @else
                 {{-- Dashboard --}}
                 <li><a class="ai-icon" href="{{ route('user_dashboard') }}" aria-expanded="false">
