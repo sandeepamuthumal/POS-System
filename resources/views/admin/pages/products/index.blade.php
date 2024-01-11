@@ -68,11 +68,6 @@
                                         <label class="form-label text-black font-w500">Price</label>
                                         <input type="text" name="price" id="price" class="form-control">
                                     </div>
-
-                                    <div class="mb-3 col-md-6">
-                                        <label class="form-label text-black font-w500">Discount</label>
-                                        <input type="text" name="discount" id="discount" class="form-control">
-                                    </div>
                                 </div>
 
                                 <div class="row">
@@ -152,6 +147,8 @@
                                     <td>{{ number_format($item->unit_price, 2) }}</td>
                                     <td>{{ $item->available_stock }}</td>
                                     <td>
+                                        <a href="{{ url('product/view',$item->id) }}" type="button" class="btn btn-xs btn-warning" data-toggle="tooltip" title="view"><i class="fa-solid fa-eye"></i></a>
+                                        <a href="{{ url('product/download',$item->id) }}" class="btn btn-xs btn-success " data-toggle="tooltip" title="Download"><i class="fas fa-download"></i></a>
                                         <a href="javascript:void(0)" data-id="{{ $item->id }}"
                                             class="btn btn-xs btn-primary edit" data-toggle="tooltip" title="Edit"><i
                                                 class="fa-solid fa-pen-to-square"></i></a>

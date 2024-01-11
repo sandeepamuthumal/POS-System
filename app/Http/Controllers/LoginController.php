@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Customer;
+use App\Models\Item;
+use App\Models\Sale;
 use App\Models\User;
 use App\Models\UserType;
 use Illuminate\Http\Request;
@@ -31,12 +33,22 @@ class LoginController extends Controller
 
     public function AdminDashboard()
     {
-        return view('admin.pages.admin_dashboard');
+        $data['all_customers'] = Customer::where('status',1)->count();
+        $data['all_products'] = Item::where('status',1)->count();
+        $data['all_sales'] = Sale::where('status',1)->count();
+        $data['products'] = Item::where('status',1)->get();
+
+        return view('admin.pages.admin_dashboard',$data);
     }
 
     public function UserDashboard()
     {
-        return view('user.pages.user_dashboard');
+        $data['all_customers'] = Customer::where('status',1)->count();
+        $data['all_products'] = Item::where('status',1)->count();
+        $data['all_sales'] = Sale::where('status',1)->count();
+        $data['products'] = Item::where('status',1)->get();
+
+        return view('admin.pages.admin_dashboard',$data);
     }
 
     public function login_process(Request $request)

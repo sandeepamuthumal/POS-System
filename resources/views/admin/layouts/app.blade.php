@@ -10,17 +10,17 @@
 	<meta name="author" content="" />
 	<meta name="robots" content="" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-	<meta name="description" content="EasyWash" />
-	<meta property="og:title" content="EasyWash" />
+	<meta name="description" content="Circuit Galaxy" />
+	<meta property="og:title" content="Circuit Galaxy" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-	<meta property="og:description" content="EasyWash" />
+	<meta property="og:description" content="Circuit Galaxy" />
 	<meta property="og:image" content="https://zenix.dexignzone.com/xhtml/social-image.png" />
 	<meta name="format-detection" content="telephone=no">
 
-    <title>EasyWash</title>
+    <title>Circuit Galaxy</title>
 
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon.ico')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('logo/Circuit.jpg')}}">
 
     @include('admin.libraries.styles')
 

@@ -4,6 +4,8 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\purchaseController;
+use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -72,7 +74,30 @@ Route::middleware(['isLoggedIn'])->group(function () {
         Route::post('/product/store', 'storeProduct')->name('store_product');
         Route::post('/product/delete/{id}', 'deleteProduct')->name('delete_product');
         Route::get('/product/edit', 'editProduct');
+        Route::get('/product/view/{id}', 'viewProduct');
+        Route::get('/product/download/{id}', 'downloadQrcode');
         Route::post('/product/update', 'updateProduct');
+    });
+
+    Route::controller(purchaseController::class)->group(function () {
+        Route::get('/purchases', 'purchases')->name('purchases');
+        Route::post('/add/purchase/item', 'addPurchaseItem');
+        Route::get('/load/purchase/items', 'loadPurchaseItems');
+        Route::get('/delete/purchase/item', 'deletePurchaseItem');
+        Route::get('/load/purchase/code', 'loadPurchaseCode');
+        Route::get('/purchase/edit', 'editPurchase');
+        Route::post('/purchase/delete/{id}', 'delete')->name('delete_purchase');;
+        Route::post('/purchase/store', 'storePurchases');
+        Route::post('/purchase/load/active', 'loadPurchaseActive');
+    });
+
+    Route::controller(SalesController::class)->group(function () {
+        Route::get('/sales', 'sales')->name('sales');
+        Route::get('/sales/receipt/view/{id}', 'salesView');
+        Route::get('/sales/pos', 'pos')->name('pos');
+        Route::get('/show/product/details', 'showProduct');
+        Route::post('/sale/item/store', 'storeSaleProduct');
+        Route::post('/sale/submit', 'submitSale');
     });
 });
 

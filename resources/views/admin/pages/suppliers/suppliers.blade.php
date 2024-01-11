@@ -130,28 +130,9 @@
         </div>
         <!-- row -->
 
-
-
-        <div class="row page-titles mx-0">
-            <div class="col-sm-6 p-md-0">
-                <div class="welcome-text">
-                    <h4>All Suppliers</h4>
-                </div>
-            </div>
-        </div>
-
         <div class="card">
             <div class="card-header">
-                <ul class="nav nav-tabs style-2">
-                    <li class="nav-item">
-                        <a href="javascript:void(0)" class="nav-link active">Active Suppliers <span
-                                class="badge badge-primary shadow-primary">{{ $active_suppliers }}</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="javascript:void(0)" class="nav-link active">Deactive Suppliers <span
-                                class="badge badge-danger shadow-danger">{{ $deactive_suppliers }}</span></a>
-                    </li>
-                </ul>
+                <h4 class="card-title">All Suppliers</h4>
                 <button id="show-add-model" class="btn btn-rounded btn-outline-primary shadow btn-sm sharp "><span
                         class="btn-icon-start text-info"><i class="fa fa-plus color-info"></i>
                     </span>Add New</button>

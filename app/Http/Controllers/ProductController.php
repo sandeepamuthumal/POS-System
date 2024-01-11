@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Helpers\Helper;
 use App\Models\Category;
 use App\Models\Item;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Image;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ProductController extends Controller
 {
@@ -83,6 +86,33 @@ class ProductController extends Controller
         $product->status = 1;
         $product->save();
 
+        // Generate the QR code
+        $qrCode = QrCode::format('png')
+                ->size(200)
+                ->margin(2)
+                ->generate($product->item_code);
+        // Define the folder and filename
+        $folder = $this->generateFolderName();
+        $filename = $product->item_code;
+
+        // Define the base path for storing the images
+        $basePath = public_path('uploads/qrcodes/' . $folder);
+
+        // Check if the folder exists; if not, create it
+        if (!File::exists($basePath)) {
+            File::makeDirectory($basePath, 0755, true);
+        }
+
+        // Save the QR code image to the specified folder
+        $filePath = $basePath . '/' . $filename . '.png';
+        file_put_contents($filePath, $qrCode);
+
+        $savingFileName = $folder . '/' . $filename . '.png';
+
+
+        $product->path = $savingFileName;
+        $product->update();
+
         return redirect()->back()->with('message','Product created successfully');
     }
 
@@ -132,5 +162,37 @@ class ProductController extends Controller
         $product->update();
 
         return response()->json(['success' => true]);
+    }
+
+    public function viewProduct($id)
+    {
+        $product = Item::find($id);
+
+        return view('admin.pages.products.view',compact('product'));
+    }
+
+    public function downloadQrcode($id)
+    {
+        $qr = Item::find($id);
+        $filename = $qr->path;
+
+        $filePath = public_path('uploads/qrcodes/' . $filename);
+
+        if (File::exists($filePath)) {
+            return response()->download($filePath);
+        }
+
+        // Handle the case where the file doesn't exist
+        abort(404);
+    }
+
+    private function generateFolderName()
+    {
+        $date = Carbon::now();
+        $year = $date->year;
+        $month = $date->format('m');
+        $day = $date->format('d');
+
+        return "{$year}-{$month}-{$day}";
     }
 }

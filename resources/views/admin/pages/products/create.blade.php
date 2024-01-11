@@ -69,7 +69,7 @@
                                     <div class="form-group">
                                         <label class="form-label text-black font-w500">Quantity</label>
                                         <input type="number" name="quantity" id="quantity"
-                                            class="form-control input-rounded form-control-sm">
+                                            class="form-control input-rounded form-control-sm" value="0">
                                         <span class="text-danger">
                                             @error('quantity')
                                                 {{ $message }}
@@ -78,12 +78,6 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-12 mb-2">
-                                    <div class="form-group">
-                                        <label class="form-label text-black font-w500">Description</label>
-                                        <textarea name="description" class="form-control" cols="30" rows="10" id="comment"></textarea>
-                                    </div>
-                                </div>
 
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
@@ -100,14 +94,6 @@
 
                                 <div class="col-lg-6 mb-2">
                                     <div class="form-group">
-                                        <label class="form-label text-black font-w500">Discount</label>
-                                        <input type="text" name="discount" id="discount"
-                                            class="form-control input-rounded form-control-sm">
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-12">
-                                    <div class="form-group">
                                         <label class="form-label text-black font-w500">Product Image
                                         </label>
                                         <div class="form-file">
@@ -116,6 +102,16 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="col-lg-12 mb-2">
+                                    <div class="form-group">
+                                        <label class="form-label text-black font-w500">Description</label>
+                                        <textarea name="description" class="form-control" cols="30" rows="10" id="comment"></textarea>
+                                    </div>
+                                </div>
+
+
+
                             </div>
                     </div>
                     <div class="card-footer">

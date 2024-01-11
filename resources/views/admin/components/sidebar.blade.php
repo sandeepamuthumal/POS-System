@@ -63,11 +63,66 @@
                         <li><a href="{{ route('products') }}">Products</a></li>
                     </ul>
                 </li>
+
+
+                {{-- Purchases --}}
+                <li>
+                    <a class="ai-icon" href="{{ route('purchases') }}" aria-expanded="false">
+                        <i class="flaticon-381-app"></i>
+                        <span class="nav-text">Purchases</span>
+                    </a>
+                </li>
+
+                 {{-- POS --}}
+                <li>
+                    <a class="ai-icon" href="{{ route('pos') }}" aria-expanded="false">
+                        <i class="flaticon-381-search-3"></i>
+                        <span class="nav-text">POS</span>
+                    </a>
+                </li>
+
+
+                 {{-- Sales --}}
+                 <li>
+                    <a class="ai-icon" href="{{ route('sales') }}" aria-expanded="false">
+                        <i class="flaticon-381-print"></i>
+                        <span class="nav-text">Sales</span>
+                    </a>
+                </li>
             @else
                 {{-- Dashboard --}}
                 <li><a class="ai-icon" href="{{ route('user_dashboard') }}" aria-expanded="false">
                         <i class="flaticon-144-layout"></i>
                         <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
+
+                {{-- Customers --}}
+                <li>
+                    <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                        <i class="flaticon-381-user-9"></i>
+                        <span class="nav-text">Customers</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li><a href="{{ route('all_customers') }}">All Customers</a></li>
+                        <li><a href="{{ route('deactive_customer') }}">Inactive Customers</a></li>
+                    </ul>
+                </li>
+
+                 {{-- POS --}}
+                 <li>
+                    <a class="ai-icon" href="{{ route('pos') }}" aria-expanded="false">
+                        <i class="flaticon-381-search-3"></i>
+                        <span class="nav-text">POS</span>
+                    </a>
+                </li>
+
+
+                 {{-- Sales --}}
+                 <li>
+                    <a class="ai-icon" href="{{ route('sales') }}" aria-expanded="false">
+                        <i class="flaticon-381-print"></i>
+                        <span class="nav-text">Sales</span>
                     </a>
                 </li>
             @endif
