@@ -24,4 +24,5 @@
     href='https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css'>
 <link rel='stylesheet' href='https://unpkg.com/filepond-plugin-file-poster/dist/filepond-plugin-file-poster.css'>
 <link href="{{ asset('admin/css/laundry.css') }}" rel="stylesheet">
+
 @stack('css')

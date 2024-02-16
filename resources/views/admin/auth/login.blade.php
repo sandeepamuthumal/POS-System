@@ -82,9 +82,7 @@
                                             <div class="alert alert-danger">{{ Session::get('fail') }}</div>
                                         @endif
 
-
                                     </form>
-
                                 </div>
                             </div>
                         </div>
